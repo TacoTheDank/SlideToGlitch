@@ -30,10 +30,10 @@ public class Glitcher {
 
     private static void glitchJpegBytes(int i) {
         int maxIndex = imageByte.length - jpgHeaderLength - 4;
-        double pxMin = (maxIndex / iterations * i);
-        double pxMax = (maxIndex / iterations * (i + 1));
+        double pxMin = maxIndex / iterations * i;
+        double pxMax = maxIndex / iterations * (i + 1);
         double delta = pxMax - pxMin;
-        double pxIndex = (pxMin + delta * seed);
+        double pxIndex = pxMin + delta * seed;
         if (pxIndex > maxIndex) {
             pxIndex = maxIndex;
         }
