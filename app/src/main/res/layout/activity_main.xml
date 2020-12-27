@@ -312,7 +312,6 @@
             android:layout_weight="1">
 
             <Button
-                android:id="@+id/Glitch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
@@ -335,7 +334,6 @@
             android:layout_weight="1">
 
             <Button
-                android:id="@+id/About"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"

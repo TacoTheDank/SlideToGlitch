@@ -21,7 +21,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.smv.slidetoglitch.Filter.Glitcher;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -48,12 +47,9 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
     private TextView seedText;
     private TextView iterationsText;
     private TextView qualityText;
-    private Button originalPreview;
 
     private LinearLayout glitchLayout;
     private LinearLayout aboutLayout;
-    private Button glitchButton;
-    private Button aboutButton;
 
     public static Intent getIntent(Context context, Bundle bundle) {
         Intent intent = new Intent(context, MainActivity.class);
@@ -99,22 +95,17 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
 
         glitchLayout = findViewById(R.id.glitchLayout);
         aboutLayout = findViewById(R.id.aboutLayout);
-        glitchButton = findViewById(R.id.Glitch);
-        aboutButton = findViewById(R.id.About);
         glitchLayout.setVisibility(View.VISIBLE);
         aboutLayout.setVisibility(View.INVISIBLE);
 
-        originalPreview = findViewById(R.id.originalPreview);
-        originalPreview.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    imageView.setImageBitmap(originalBitmap);
-                } else {
-                    imageView.setImageBitmap(glitchBitmap);
-                }
-                return true;
+        Button originalPreview = findViewById(R.id.originalPreview);
+        originalPreview.setOnTouchListener((v, event) -> {
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                imageView.setImageBitmap(originalBitmap);
+            } else {
+                imageView.setImageBitmap(glitchBitmap);
             }
+            return true;
         });
 
         initGlitch();
@@ -233,15 +224,13 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
         if (file.exists()) {
             file.delete();
         }
-        FileOutputStream fos = null;
+        FileOutputStream fos;
         try {
             fos = new FileOutputStream(file);
             glitchBitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
             fos.flush();
             fos.close();
             Toast.makeText(this, "Image Saved at SToG/", Toast.LENGTH_SHORT).show();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }

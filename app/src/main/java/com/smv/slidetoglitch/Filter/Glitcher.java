@@ -7,7 +7,9 @@ import java.io.ByteArrayOutputStream;
 
 public class Glitcher {
 
-    static double amount, seed, iterations;
+    static double amount;
+    static double seed;
+    static double iterations;
     static byte[] imageByte;
     static int jpgHeaderLength;
 
@@ -23,9 +25,7 @@ public class Glitcher {
         for (int i = 0, len = (int) iterations; i < len; i++) {
             glitchJpegBytes(i);
         }
-        Bitmap glitchedBitmap = BitmapFactory.decodeByteArray(imageByte, 0, imageByte.length);
-        return glitchedBitmap;
-
+        return BitmapFactory.decodeByteArray(imageByte, 0, imageByte.length);
     }
 
     private static void glitchJpegBytes(int i) {
