@@ -1,20 +1,40 @@
 <resources>
     <string name="app_name">SlideToGlitch</string>
+
+    <!-- Home screen text -->
     <string name="camera_button_text">Camera</string>
     <string name="gallery_button_text">Gallery</string>
 
+    <!-- Content descriptions -->
     <string name="astronaut_content_desc">astronaut</string>
     <string name="app_logo_content_desc">logo</string>
+    <string name="aries_logo_content_desc">aries_content_desc</string>
     <string name="camera_button_content_desc">camera_button_image</string>
-    <string name="gallery_button_content_desc">gallery_button_image</string>
     <string name="edited_image_content_desc">edited_image</string>
-    <string name="Amount">Amount</string>
-    <string name="Seed">Seed</string>
-    <string name="Iterations">Iterations</string>
-    <string name="Quality">Quality</string>
-    <string name="Zoom">Zoom</string>
-    <string name="About">About</string>
-    <string name="Glitch">Glitch</string>
-    <string name="Save">Save</string>
+    <string name="gallery_button_content_desc">gallery_button_image</string>
+
+    <!-- Image glitching options -->
+    <string name="amount">Amount</string>
+    <string name="seed">Seed</string>
+    <string name="iterations">Iterations</string>
+    <string name="quality">Quality</string>
+
+    <!-- Bottom tab options -->
+    <string name="glitch">Glitch</string>
+    <string name="about">About</string>
+
+    <!-- Unused -->
+    <string name="zoom">Zoom</string>
+    <string name="save">Save</string>
+
+    <!-- About screen text -->
+    <string name="about_app_purpose_1">With this app, you can glitch/distort your own images. The image can be either captured from Camera or select from Gallery. You can use the sliders in the control panel to alter the glitched parameters. The image updates in real time.</string>
+    <string name="about_app_purpose_2">This app corrupts some bytes in an image. It directly works on the byte array of an image. This app was inspired by Georg\'s snorpey.github.io/jpg-glitch/ website.</string>
+    <string name="about_app_purpose_3">This app was created by Shubham Vernekar. He is always happy to learn new things. You can explore the source code of this app on GitHub https://github.com/shubhamvernekar</string>
+    <string name="about_parameters">Parameters</string>
+    <string name="about_amount_desc">Amount: The amount of image byte corrupted [1,99].</string>
+    <string name="about_seed_desc">Seed: Seed are the grid points selected to agglomerate the surrounding control volumes [0, 100].</string>
+    <string name="about_iterations_desc">Iterations: Specifies number of time\'s byte will be glitched [1, 100].</string>
+    <string name="about_quality_desc">Quality: Specifies the Quality of image [1, 99].</string>
 
 </resources>

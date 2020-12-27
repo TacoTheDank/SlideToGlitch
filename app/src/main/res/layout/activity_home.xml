@@ -20,7 +20,7 @@
             android:layout_width="250dp"
             android:layout_height="250dp"
             android:layout_centerInParent="true"
-            android:contentDescription="aries_content_desc"
+            android:contentDescription="@string/aries_logo_content_desc"
             android:scaleType="centerCrop"
             app:srcCompat="@drawable/aries_background" />
 

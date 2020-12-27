@@ -20,7 +20,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:layout_marginStart="10dp"
             android:background="@drawable/saveimage"
             android:onClick="saveImage" />
@@ -28,7 +28,7 @@
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginEnd="10dp"
             android:background="@drawable/backtohome"
@@ -43,7 +43,7 @@
             android:id="@+id/originalPreview"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:layout_marginStart="10dp"
             android:background="@drawable/originalimage" />
@@ -71,7 +71,7 @@
                 android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
-                android:text="@string/Amount"
+                android:text="@string/amount"
                 android:textAlignment="center"
                 android:textColor="@color/colorPrimaryWhite" />
 
@@ -106,7 +106,7 @@
                 android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
-                android:text="@string/Seed"
+                android:text="@string/seed"
                 android:textAlignment="center"
                 android:textColor="@color/colorPrimaryWhite" />
 
@@ -141,7 +141,7 @@
                 android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
-                android:text="@string/Iterations"
+                android:text="@string/iterations"
                 android:textAlignment="center"
                 android:textColor="@color/colorPrimaryWhite" />
 
@@ -175,7 +175,7 @@
                 android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
-                android:text="@string/Quality"
+                android:text="@string/quality"
                 android:textAlignment="center"
                 android:textColor="@color/colorPrimaryWhite" />
 
@@ -222,7 +222,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="About"
+                android:text="@string/about"
                 android:textColor="@color/colorPrimaryWhite"
                 android:textSize="30sp" />
         </RelativeLayout>
@@ -231,21 +231,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="With this app, you can glitch/distort your own images. The image can be either captured from Camera or select from Gallery. You can use the sliders in the control panel to alter the glitched parameters. The image updates in real time. "
+            android:text="@string/about_app_purpose_1"
             android:textColor="@color/colorPrimaryWhite" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="This app corrupts some bytes in an image. It directly works on the byte array of an image. This app was inspired by Georg's snorpey.github.io/jpg-glitch/ website."
+            android:text="@string/about_app_purpose_2"
             android:textColor="@color/colorPrimaryWhite" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="This app was created by Shubham Vernekar. He is always happy to learn new things. You can explore the source code of this app on GitHub https://github.com/shubhamvernekar"
+            android:text="@string/about_app_purpose_3"
             android:textColor="@color/colorPrimaryWhite" />
 
         <RelativeLayout
@@ -256,8 +256,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:text="Parameters"
+                android:layout_alignParentStart="true"
+                android:text="@string/about_parameters"
                 android:textColor="@color/colorPrimaryWhite"
                 android:textSize="15sp"
                 android:textStyle="bold" />
@@ -267,7 +267,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Amount: The amount of image byte corrupted [1,99]."
+            android:text="@string/about_amount_desc"
             android:textColor="@color/colorPrimaryWhite"
             android:textStyle="italic" />
 
@@ -275,7 +275,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Seed: Seed are the grid points selected to agglomerate the surrounding control volumes [0, 100]."
+            android:text="@string/about_seed_desc"
             android:textColor="@color/colorPrimaryWhite"
             android:textStyle="italic" />
 
@@ -283,7 +283,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Iterations: Specifies number of time's byte will be glitched [1, 100]."
+            android:text="@string/about_iterations_desc"
             android:textColor="@color/colorPrimaryWhite"
             android:textStyle="italic" />
 
@@ -291,7 +291,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Quality: Specifies the Quality of image [1, 99]."
+            android:text="@string/about_quality_desc"
             android:textColor="@color/colorPrimaryWhite"
             android:textStyle="italic" />
     </LinearLayout>
@@ -317,7 +317,7 @@
                 android:layout_centerInParent="true"
                 android:background="@color/colorPrimaryDark"
                 android:onClick="glitchVisible"
-                android:text="@string/Glitch"
+                android:text="@string/glitch"
                 android:textColor="@color/colorPrimaryWhite" />
 
         </RelativeLayout>
@@ -339,7 +339,7 @@
                 android:layout_centerInParent="true"
                 android:background="@color/colorPrimaryDark"
                 android:onClick="aboutVisible"
-                android:text="@string/About"
+                android:text="@string/about"
                 android:textColor="@color/colorPrimaryWhite" />
         </RelativeLayout>
 
