@@ -28,17 +28,16 @@ import java.io.InputStream;
 import java.text.DateFormat;
 import java.util.Date;
 
-public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBarChangeListener{
+public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBarChangeListener {
 
     public static final String IMAGE_URI = "IMAGE_URI_KEY";
+    Uri imageUri;
     private ImageView imageView;
     private Bitmap originalBitmap;
     private Bitmap glitchBitmap;
-    Uri imageUri;
-
-    private int amount=24;
-    private int seed=53;
-    private int iterations=21;
+    private int amount = 24;
+    private int seed = 53;
+    private int iterations = 21;
     private int quality = 69;
 
     private SeekBar amountSeek;
@@ -56,6 +55,14 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
     private Button glitchButton;
     private Button aboutButton;
 
+    public static Intent getIntent(Context context, Bundle bundle) {
+        Intent intent = new Intent(context, MainActivity.class);
+        if (bundle != null) {
+            intent.putExtras(bundle);
+        }
+        return intent;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
         if (extras != null) {
             imageUri = Uri.parse(getIntent().getExtras().getString(IMAGE_URI));
             try {
-                InputStream in =  getContentResolver().openInputStream(imageUri);
+                InputStream in = getContentResolver().openInputStream(imageUri);
                 originalBitmap = decodeFile(in);
                 imageView.setImageBitmap(originalBitmap);
             } catch (Exception e) {
@@ -101,9 +108,9 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
         originalPreview.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if(event.getAction() == MotionEvent.ACTION_DOWN){
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
                     imageView.setImageBitmap(originalBitmap);
-                }else{
+                } else {
                     imageView.setImageBitmap(glitchBitmap);
                 }
                 return true;
@@ -138,25 +145,24 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
             in.close();
 
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return b;
     }
 
-    public void initGlitch(){
-        glitchBitmap = Glitcher.glitch(originalBitmap,amount,seed,iterations,quality);
+    public void initGlitch() {
+        glitchBitmap = Glitcher.glitch(originalBitmap, amount, seed, iterations, quality);
         imageView.setImageBitmap(glitchBitmap);
-        amountText.setText(""+amount);
+        amountText.setText("" + amount);
         amountSeek.setProgress(amount);
-        seedText.setText(""+seed);
+        seedText.setText("" + seed);
         seedSeek.setProgress(seed);
-        iterationsText.setText(""+iterations);
+        iterationsText.setText("" + iterations);
         iterationsSeek.setProgress(iterations);
-        qualityText.setText(""+quality);
+        qualityText.setText("" + quality);
         qualitySeek.setProgress(quality);
     }
-
 
     public void aboutVisible(View view) {
         glitchLayout.setVisibility(View.INVISIBLE);
@@ -203,7 +209,7 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
                 }
                 break;
         }
-        }
+    }
 
     @Override
     public void onStartTrackingTouch(SeekBar seekBar) {
@@ -215,34 +221,26 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
 
     }
 
-    public static Intent getIntent(Context context, Bundle bundle) {
-        Intent intent = new Intent(context, MainActivity.class);
-        if (bundle != null) {
-            intent.putExtras(bundle);
-        }
-        return intent;
-    }
-
     public void saveImage(View view) {
         String timeStamp = DateFormat.getDateTimeInstance().format(new Date());
         String imageFileName = "SToG_" + timeStamp + ".jpeg";
-        File direct = new File(Environment.getExternalStorageDirectory()+"/SToG");
-        if(!direct.exists()){
+        File direct = new File(Environment.getExternalStorageDirectory() + "/SToG");
+        if (!direct.exists()) {
             File imageDirect = new File("/storage/emulated/0/SToG/");
             imageDirect.mkdir();
         }
-        File file = new File("/storage/emulated/0/SToG/",imageFileName);
-        if(file.exists()){
+        File file = new File("/storage/emulated/0/SToG/", imageFileName);
+        if (file.exists()) {
             file.delete();
         }
         FileOutputStream fos = null;
-        try{
+        try {
             fos = new FileOutputStream(file);
-            glitchBitmap.compress(Bitmap.CompressFormat.JPEG,100,fos);
+            glitchBitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
             fos.flush();
             fos.close();
             Toast.makeText(this, "Image Saved at SToG/", Toast.LENGTH_SHORT).show();
-        }catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
