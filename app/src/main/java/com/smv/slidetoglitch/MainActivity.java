@@ -19,6 +19,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.smv.slidetoglitch.Filter.Glitcher;
+import com.smv.slidetoglitch.databinding.ActivityMainBinding;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
 
     public static final String IMAGE_URI = "IMAGE_URI_KEY";
     Uri imageUri;
+    ActivityMainBinding binding;
     private ImageView imageView;
     private Bitmap originalBitmap;
     private Bitmap glitchBitmap;
@@ -38,7 +40,6 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
     private int seed = 53;
     private int iterations = 21;
     private int quality = 69;
-
     private SeekBar amountSeek;
     private SeekBar seedSeek;
     private SeekBar iterationsSeek;
@@ -47,7 +48,6 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
     private TextView seedText;
     private TextView iterationsText;
     private TextView qualityText;
-
     private LinearLayout glitchLayout;
     private LinearLayout aboutLayout;
 
@@ -62,9 +62,10 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        imageView = findViewById(R.id.imageView);
+        imageView = binding.imageView;
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -78,27 +79,27 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
             }
         }
 
-        amountText = findViewById(R.id.amountValue);
-        seedText = findViewById(R.id.seedValue);
-        iterationsText = findViewById(R.id.iterationsValue);
-        qualityText = findViewById(R.id.qualityValue);
+        amountText = binding.textAmount;
+        seedText = binding.textSeed;
+        iterationsText = binding.textIterations;
+        qualityText = binding.textQuality;
 
-        amountSeek = findViewById(R.id.amountSeek);
-        seedSeek = findViewById(R.id.seedSeek);
-        iterationsSeek = findViewById(R.id.iterationsSeek);
-        qualitySeek = findViewById(R.id.qualitySeek);
+        amountSeek = binding.amountSeek;
+        seedSeek = binding.seedSeek;
+        iterationsSeek = binding.iterationsSeek;
+        qualitySeek = binding.qualitySeek;
 
         amountSeek.setOnSeekBarChangeListener(this);
         seedSeek.setOnSeekBarChangeListener(this);
         iterationsSeek.setOnSeekBarChangeListener(this);
         qualitySeek.setOnSeekBarChangeListener(this);
 
-        glitchLayout = findViewById(R.id.glitchLayout);
-        aboutLayout = findViewById(R.id.aboutLayout);
+        glitchLayout = binding.glitchLayout;
+        aboutLayout = binding.aboutLayout;
         glitchLayout.setVisibility(View.VISIBLE);
         aboutLayout.setVisibility(View.INVISIBLE);
 
-        Button originalPreview = findViewById(R.id.originalPreview);
+        Button originalPreview = binding.originalPreview;
         originalPreview.setOnTouchListener((v, event) -> {
             if (event.getAction() == MotionEvent.ACTION_DOWN) {
                 imageView.setImageBitmap(originalBitmap);
