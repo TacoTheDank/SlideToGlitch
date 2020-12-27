@@ -68,7 +68,7 @@
                     android:layout_centerHorizontal="true"
                     android:contentDescription="@string/camera_button_content_desc"
                     android:onClick="openCamera"
-                    android:src="@drawable/ic_camera_alt_white" />
+                    app:srcCompat="@drawable/ic_camera" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -91,7 +91,7 @@
                     android:layout_centerHorizontal="true"
                     android:contentDescription="@string/gallery_button_content_desc"
                     android:onClick="openGallery"
-                    android:src="@drawable/ic_phone_android_white" />
+                    app:srcCompat="@drawable/ic_photo_library" />
 
                 <TextView
                     android:layout_width="wrap_content"
